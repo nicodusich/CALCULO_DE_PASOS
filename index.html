@@ -51,6 +51,7 @@ body{
   border-radius:20px;
   font-size:12px;
   margin-bottom:10px;
+  display:inline-block;
 }
 
 .top-header h1{
@@ -67,6 +68,7 @@ body{
   display:flex;
   gap:10px;
   margin-bottom:20px;
+  flex-wrap:wrap;
 }
 
 .tab{
@@ -96,31 +98,121 @@ body{
   border:1px solid var(--border);
 }
 
-/* LABEL */
 .card-label{
   font-size:12px;
   color:var(--sub);
-  margin-bottom:10px;
+  margin-bottom:15px;
   text-transform:uppercase;
+  letter-spacing:1px;
 }
 
-/* BUTTONS */
+/* TOGGLE BUTTONS */
+.toggle-row{
+  display:flex;
+  gap:10px;
+  margin-bottom:15px;
+}
+
 .tbtn{
   flex:1;
-  padding:10px;
+  padding:12px;
   border-radius:10px;
   background:var(--card2);
   border:1px solid var(--border);
   color:var(--sub);
   cursor:pointer;
   transition:.2s;
+  font-weight:500;
 }
 
 .tbtn.active{
   background:var(--accent);
   color:#000;
+  border-color:var(--accent);
 }
 
+/* INPUTS */
+.fg{
+  margin-bottom:15px;
+}
+
+.fg label{
+  display:block;
+  margin-bottom:8px;
+  color:var(--sub);
+  font-size:14px;
+}
+
+input,select{
+  width:100%;
+  padding:12px;
+  border-radius:10px;
+  border:1px solid var(--border);
+  background:var(--card2);
+  color:white;
+  font-size:14px;
+}
+
+.row2{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:15px;
+}
+
+/* SLIDERS MEJORADOS */
+.slider-container{
+  margin-bottom:20px;
+}
+
+.slider-header{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:10px;
+  color:var(--text);
+  font-weight:500;
+}
+
+.slider-value{
+  color:var(--accent);
+  font-size:18px;
+  font-weight:bold;
+}
+
+.slider-labels{
+  display:flex;
+  justify-content:space-between;
+  margin-top:8px;
+  font-size:11px;
+  color:var(--sub);
+}
+
+/* Slider personalizado */
+input[type="range"]{
+  -webkit-appearance:none;
+  width:100%;
+  height:6px;
+  border-radius:5px;
+  background:linear-gradient(90deg, var(--accent) 0%, var(--accent) 50%, var(--border) 50%, var(--border) 100%);
+  outline:none;
+  padding:0;
+}
+
+input[type="range"]::-webkit-slider-thumb{
+  -webkit-appearance:none;
+  width:20px;
+  height:20px;
+  border-radius:50%;
+  background:var(--accent);
+  cursor:pointer;
+  border:2px solid var(--text);
+  box-shadow:0 0 10px var(--accent);
+}
+
+input[type="range"]::-webkit-slider-thumb:hover{
+  transform:scale(1.2);
+}
+
+/* Botones */
 .cbtn{
   width:100%;
   padding:14px;
@@ -131,52 +223,251 @@ body{
   font-weight:bold;
   cursor:pointer;
   transition:.2s;
+  margin-top:10px;
+  font-size:16px;
 }
 
 .cbtn:hover{
-  transform:scale(1.03);
+  transform:scale(1.02);
+  box-shadow:0 0 20px var(--accent-soft);
 }
 
-/* INPUTS */
-input,select{
-  width:100%;
-  padding:10px;
-  border-radius:10px;
-  border:1px solid var(--border);
+.save-btn{
   background:var(--card2);
-  color:white;
+  border:1px solid var(--accent);
+  color:var(--accent);
+  margin-top:5px;
 }
 
-/* RESULTS */
-.met{
+.save-btn:hover{
+  background:var(--accent);
+  color:#000;
+}
+
+.reset-btn{
+  background:transparent;
+  border:1px solid #ff4444;
+  color:#ff4444;
+  margin-top:5px;
+}
+
+.reset-btn:hover{
+  background:#ff4444;
+  color:#fff;
+}
+
+.button-group{
+  display:flex;
+  gap:10px;
+  margin-top:10px;
+}
+
+.button-group .cbtn{
+  flex:1;
+  margin-top:0;
+}
+
+/* Registro diario */
+.daily-stats{
+  background:linear-gradient(135deg, var(--card2), var(--card));
+  border-radius:12px;
+  padding:15px;
+  margin-bottom:15px;
+  border:1px solid var(--accent);
+}
+
+.daily-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:15px;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+.daily-title{
+  font-size:14px;
+  color:var(--sub);
+  text-transform:uppercase;
+}
+
+.daily-date{
+  font-size:12px;
+  color:var(--accent);
+}
+
+.daily-numbers{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:15px;
+  text-align:center;
+}
+
+.daily-item{
+  background:var(--card);
+  padding:12px;
+  border-radius:10px;
+}
+
+.daily-value{
+  font-size:28px;
+  font-weight:bold;
+  color:var(--accent);
+}
+
+.daily-label{
+  font-size:11px;
+  color:var(--sub);
+  margin-top:5px;
+}
+
+.daily-progress{
+  margin-top:15px;
+}
+
+.progress-bar{
+  height:8px;
+  background:var(--border);
+  border-radius:10px;
+  overflow:hidden;
+  margin-top:8px;
+}
+
+.progress-fill{
+  height:100%;
+  background:var(--accent);
+  width:0%;
+  transition:width .3s ease;
+  border-radius:10px;
+}
+
+/* Historial */
+.history-list{
+  max-height:200px;
+  overflow-y:auto;
+}
+
+.history-item{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:10px;
+  border-bottom:1px solid var(--border);
+  font-size:13px;
+}
+
+.history-time{
+  color:var(--accent);
+  font-size:11px;
+}
+
+.history-stats{
+  display:flex;
+  gap:15px;
+}
+
+.history-stats span:first-child{
+  color:var(--sub);
+}
+
+.history-stats span:last-child{
+  color:var(--text);
+  font-weight:bold;
+}
+
+.delete-item{
+  background:none;
+  border:none;
+  color:#ff4444;
+  cursor:pointer;
+  font-size:16px;
+  padding:0 5px;
+}
+
+.empty-history{
+  text-align:center;
+  color:var(--sub);
+  padding:20px;
+}
+
+/* Resultados */
+.res-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+  margin-bottom:15px;
+}
+
+.met-card{
   background:var(--card2);
   border-radius:12px;
   padding:15px;
   text-align:center;
 }
 
-.met.hl{
+.met-card.highlight{
   background:var(--accent);
   color:#000;
 }
 
-.met-val{
-  font-size:26px;
+.met-value{
+  font-size:28px;
   font-weight:bold;
 }
 
-/* BARRA INTENSIDAD */
-.ibar{
-  margin-top:10px;
-  padding:10px;
+.met-label{
+  font-size:12px;
+  color:var(--sub);
+  margin-top:5px;
+}
+
+.met-card.highlight .met-label{
+  color:#000;
+}
+
+.intensity-bar{
+  padding:12px;
   border-radius:10px;
-  font-weight:bold;
   text-align:center;
+  font-weight:bold;
+  margin-top:10px;
 }
 
-/* TIPS */
+/* Grid de contexto */
+.context-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin-top:10px;
+}
+
+.context-item{
+  text-align:center;
+  padding:10px;
+  background:var(--card2);
+  border-radius:10px;
+}
+
+.context-icon{
+  font-size:24px;
+  margin-bottom:5px;
+}
+
+.context-value{
+  font-weight:bold;
+  font-size:14px;
+}
+
+.context-label{
+  font-size:10px;
+  color:var(--sub);
+}
+
+/* Tips */
 .tip{
-  padding:10px 0;
+  display:flex;
+  gap:12px;
+  padding:12px 0;
   border-bottom:1px solid var(--border);
 }
 
@@ -185,275 +476,566 @@ input,select{
 }
 
 .dot{
-  width:6px;
-  height:6px;
+  width:8px;
+  height:8px;
   background:var(--accent);
   border-radius:50%;
-  margin-top:6px;
+  margin-top:4px;
+  flex-shrink:0;
 }
 
-/* CONTACT */
-.avatar{
-  background:var(--accent);
-  color:#000;
+.tip-text{
+  font-size:13px;
+  line-height:1.4;
 }
 
-/* MOBILE */
+/* Ocultar campos */
+#treadmill-fields, #stair-fields {
+  display: none;
+  margin-top: 15px;
+}
+
+/* Mobile */
 @media(max-width:500px){
   .row2{grid-template-columns:1fr}
+  .res-grid{grid-template-columns:1fr}
+  .context-grid{grid-template-columns:1fr}
+  .toggle-row{flex-direction:column}
+  .button-group{flex-direction:column}
 }
-
 </style>
 
 <div class="wrap">
-<h2 class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden">Cardio Tracker — pasos, calorías, información fitness y contacto</h2>
-
-<div class="top-header">
-  <div class="badge">Fitness Tracker</div>
-  <h1>Cardio & Calorías</h1>
-  <p>Tu compañero de entrenamiento personalizado</p>
-</div>
-
-<div class="tabs">
-  <button class="tab active" onclick="switchTab('tracker')">Tracker</button>
-  <button class="tab" onclick="switchTab('info')">Información</button>
-  <button class="tab" onclick="switchTab('calorias')">Calorías</button>
-  <button class="tab" onclick="switchTab('contacto')">Contacto</button>
-</div>
-
-<div id="tab-tracker" class="panel active">
-  <div class="card">
-    <div class="card-label">Tipo de actividad</div>
-    <div class="toggle-row">
-      <button class="tbtn active" onclick="setMode('walk')" id="btn-walk">🚶 Caminata normal</button>
-      <button class="tbtn" onclick="setMode('treadmill')" id="btn-treadmill">⚡ Caminadora</button>
-    </div>
-    <div class="row2">
-      <div class="fg"><label class="lbl">Tiempo (minutos)</label><input type="number" id="minutes" value="30" min="1" max="300"></div>
-      <div class="fg"><label class="lbl">Tu peso (kg)</label><input type="number" id="weight" value="70" min="30" max="200"></div>
-    </div>
-    <div class="fg"><label class="lbl">Género</label><select id="gender"><option value="m">Hombre</option><option value="f">Mujer</option></select></div>
-    <div class="tfields" id="tfields">
-      <div class="hr"></div>
-      <div class="card-label">Configuración caminadora</div>
-      <div class="sgroup">
-        <div class="shead"><label>Velocidad</label><span class="sval"><span id="spd-v">5.0</span> km/h</span></div>
-        <input type="range" id="speed" min="2" max="15" value="5" step="0.5" oninput="document.getElementById('spd-v').textContent=parseFloat(this.value).toFixed(1)">
-        <div class="slim"><span>2 km/h lento</span><span>caminar</span><span>trotar</span><span>15 km/h</span></div>
-      </div>
-      <div class="sgroup">
-        <div class="shead"><label>Inclinación</label><span class="sval"><span id="inc-v">0</span>%</span></div>
-        <input type="range" id="incline" min="0" max="15" value="0" step="1" oninput="document.getElementById('inc-v').textContent=this.value">
-        <div class="slim"><span>plano</span><span>moderado</span><span>intenso</span><span>15%</span></div>
-      </div>
-    </div>
-    <button class="cbtn" onclick="calculate()">Calcular pasos y calorías</button>
+  <div class="top-header">
+    <div class="badge">🏃‍♂️ Fitness Tracker</div>
+    <h1>Cardio & Calorías</h1>
+    <p>Tu compañero de entrenamiento personalizado</p>
   </div>
 
-  <div class="res-wrap" id="results">
+  <div class="tabs">
+    <button class="tab active" onclick="switchTab('tracker')">📊 Tracker</button>
+    <button class="tab" onclick="switchTab('info')">ℹ️ Información</button>
+    <button class="tab" onclick="switchTab('calorias')">🔥 Calorías</button>
+    <button class="tab" onclick="switchTab('contacto')">📧 Contacto</button>
+  </div>
+
+  <!-- PANEL TRACKER -->
+  <div id="tab-tracker" class="panel active">
+    <!-- RESUMEN DIARIO -->
+    <div class="daily-stats">
+      <div class="daily-header">
+        <div class="daily-title">📅 Resumen del día</div>
+        <div class="daily-date" id="current-date"></div>
+      </div>
+      <div class="daily-numbers">
+        <div class="daily-item">
+          <div class="daily-value" id="daily-steps">0</div>
+          <div class="daily-label">Pasos totales</div>
+        </div>
+        <div class="daily-item">
+          <div class="daily-value" id="daily-calories">0</div>
+          <div class="daily-label">Calorías totales</div>
+        </div>
+      </div>
+      <div class="daily-progress">
+        <div style="display:flex; justify-content:space-between; font-size:12px;">
+          <span>Progreso a 10,000 pasos</span>
+          <span id="progress-percent">0%</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" id="progress-fill"></div>
+        </div>
+      </div>
+    </div>
+
     <div class="card">
-      <div class="card-label">Tus resultados</div>
-      <div class="mgrid">
-        <div class="met hl">
-  <div class="met-val" id="r-steps">—</div>
-  <div class="met-u">pasos</div>
-</div>
-        <div class="met hl"><div class="met-lbl">Calorías</div><div class="met-val" id="r-cal">—</div><div class="met-u">kcal</div></div>
-        <div class="met"><div class="met-lbl">Distancia</div><div class="met-val" id="r-dist">—</div><div class="met-u">km</div></div>
-        <div class="met"><div class="met-lbl">Tiempo</div><div class="met-val" id="r-time">—</div><div class="met-u">minutos</div></div>
+      <div class="card-label">🏁 Tipo de actividad</div>
+      <div class="toggle-row">
+        <button class="tbtn active" onclick="setMode('walk')" id="btn-walk">🚶 Caminata normal</button>
+        <button class="tbtn" onclick="setMode('treadmill')" id="btn-treadmill">⚡ Caminadora</button>
+        <button class="tbtn" onclick="setMode('stair')" id="btn-stair">🪜 Escaladora</button>
       </div>
-      <div class="ibar" id="ibar"></div>
+      
+      <div class="row2">
+        <div class="fg">
+          <label>⏱️ Tiempo (minutos)</label>
+          <input type="number" id="minutes" value="30" min="1" max="300">
+        </div>
+        <div class="fg">
+          <label>⚖️ Tu peso (kg)</label>
+          <input type="number" id="weight" value="70" min="30" max="200">
+        </div>
+      </div>
+      
+      <div class="fg">
+        <label>👤 Género</label>
+        <select id="gender">
+          <option value="m">Hombre</option>
+          <option value="f">Mujer</option>
+        </select>
+      </div>
+      
+      <!-- Campos para CAMINADORA -->
+      <div id="treadmill-fields">
+        <div class="card-label">⚙️ Configuración caminadora</div>
+        
+        <div class="slider-container">
+          <div class="slider-header">
+            <span>🏃 Velocidad</span>
+            <span class="slider-value"><span id="spd-v">5.0</span> km/h</span>
+          </div>
+          <input type="range" id="speed" min="2" max="15" value="5" step="0.5" 
+                 oninput="updateSpeedDisplay(this.value)">
+          <div class="slider-labels">
+            <span>🚶 2 km/h</span>
+            <span>🚶‍♂️ Caminar</span>
+            <span>🏃 Trotar</span>
+            <span>💨 15 km/h</span>
+          </div>
+        </div>
+        
+        <div class="slider-container">
+          <div class="slider-header">
+            <span>⛰️ Inclinación</span>
+            <span class="slider-value"><span id="inc-v">0</span>%</span>
+          </div>
+          <input type="range" id="incline" min="0" max="15" value="0" step="1" 
+                 oninput="updateInclineDisplay(this.value)">
+          <div class="slider-labels">
+            <span>⬜ Plano</span>
+            <span>🟡 Moderado</span>
+            <span>🟠 Intenso</span>
+            <span>🔴 15%</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Campos para ESCALADORA -->
+      <div id="stair-fields">
+        <div class="card-label">🪜 Configuración escaladora</div>
+        
+        <div class="slider-container">
+          <div class="slider-header">
+            <span>🦶 Velocidad (pisadas/minuto)</span>
+            <span class="slider-value"><span id="stair-speed-v">60</span> SPM</span>
+          </div>
+          <input type="range" id="stair-speed" min="30" max="120" value="60" step="5" 
+                 oninput="updateStairSpeedDisplay(this.value)">
+          <div class="slider-labels">
+            <span>🐢 Lento (30)</span>
+            <span>🚶 Normal (60)</span>
+            <span>🏃 Rápido (90)</span>
+            <span>⚡ Máximo (120)</span>
+          </div>
+        </div>
+      </div>
+      
+      <button class="cbtn" onclick="calculate()">🎯 Calcular pasos y calorías</button>
+      
+      <div class="button-group">
+        <button class="cbtn save-btn" onclick="saveActivity()">💾 Guardar este registro</button>
+        <button class="cbtn reset-btn" onclick="resetDay()">🔄 Resetear día</button>
+      </div>
+    </div>
+
+    <div id="results">
+      <div class="card">
+        <div class="card-label">📊 Resultado actual</div>
+        <div class="res-grid">
+          <div class="met-card highlight">
+            <div class="met-value" id="r-steps">—</div>
+            <div class="met-label">Pasos</div>
+          </div>
+          <div class="met-card highlight">
+            <div class="met-value" id="r-cal">—</div>
+            <div class="met-label">Calorías (kcal)</div>
+          </div>
+          <div class="met-card">
+            <div class="met-value" id="r-dist">—</div>
+            <div class="met-label">Distancia (km)</div>
+          </div>
+          <div class="met-card">
+            <div class="met-value" id="r-time">—</div>
+            <div class="met-label">Tiempo (min)</div>
+          </div>
+        </div>
+        <div class="intensity-bar" id="ibar"></div>
+      </div>
+      
+      <div class="card">
+        <div class="card-label">📜 Historial de hoy</div>
+        <div id="history-list" class="history-list">
+          <div class="empty-history">Aún no hay registros. Guardá tu primera actividad.</div>
+        </div>
+      </div>
+      
+      <div class="card">
+        <div class="card-label">💪 Consejos fitness</div>
+        <div class="tip"><div class="dot"></div><div class="tip-text"><strong>Aumentá la inclinación:</strong> Al 5-8% quemás hasta 40% más calorías.</div></div>
+        <div class="tip"><div class="dot"></div><div class="tip-text"><strong>Escaladora:</strong> Excelente para glúteos. 30 minutos queman ~300-500 kcal.</div></div>
+        <div class="tip"><div class="dot"></div><div class="tip-text"><strong>10,000 pasos:</strong> Reduce el riesgo cardiovascular hasta un 30%.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PANEL INFO -->
+  <div id="tab-info" class="panel">
+    <div class="info-hero">
+      <div class="info-hero-t">📐 ¿Cómo funciona?</div>
+      <div>Usamos el valor MET (equivalente metabólico) con tu peso y tiempo para estimar calorías y pasos.</div>
     </div>
     <div class="card">
-      <div class="card-label">Contexto calórico</div>
-      <div class="igrid">
-        <div class="ic"><div class="ic-ico">🥑</div><div class="ic-t">Equivale a</div><div class="ic-s" id="r-food">—</div></div>
-        <div class="ic"><div class="ic-ico">🎯</div><div class="ic-t">Meta diaria</div><div class="ic-s" id="r-pct">—</div></div>
-        <div class="ic"><div class="ic-ico">⚡</div><div class="ic-t">Intensidad MET</div><div class="ic-s" id="r-met">—</div></div>
+      <div class="card-label">🧠 Datos que usamos</div>
+      <div class="concept-grid">
+        <div class="concept"><div class="concept-num">MET</div><div>Factor metabólico según intensidad</div></div>
+        <div class="concept"><div class="concept-num">kg</div><div>Peso corporal (influye en calorías)</div></div>
+        <div class="concept"><div class="concept-num">min</div><div>Duración del ejercicio</div></div>
+        <div class="concept"><div class="concept-num">SPM</div><div>Pasos por minuto en escaladora</div></div>
       </div>
+    </div>
+  </div>
+
+  <!-- PANEL CALORIAS -->
+  <div id="tab-calorias" class="panel">
+    <div class="card">
+      <div class="card-label">🔥 ¿Qué son las calorías?</div>
+      <div class="tip"><div class="dot"></div><div class="tip-text">Una caloría es la energía que tu cuerpo usa para funcionar.</div></div>
+      <div class="tip"><div class="dot"></div><div class="tip-text">7,700 kcal de déficit = 1 kg de grasa perdida.</div></div>
+      <div class="tip"><div class="dot"></div><div class="tip-text">Caminar 30 min quema ~150-250 kcal.</div></div>
+      <div class="tip"><div class="dot"></div><div class="tip-text">Escaladora 30 min quema ~300-600 kcal.</div></div>
+    </div>
+  </div>
+
+  <!-- PANEL CONTACTO -->
+  <div id="tab-contacto" class="panel">
+    <div class="contact-hero">
+      <div class="avatar">ND</div>
+      <h3>Nico Dusich</h3>
+      <p style="color:var(--sub)">Fitness & Cardio Tracker</p>
     </div>
     <div class="card">
-      <div class="card-label">Consejos</div>
-      <div class="tip"><div class="dot"></div><div class="tip-t">Aumentar la inclinación al 5–8% quema hasta un 40% más de calorías sin subir la velocidad.</div></div>
-      <div class="tip"><div class="dot"></div><div class="tip-t">Los intervalos (2 min rápido / 2 min lento) son más efectivos para quemar grasa que ritmo constante.</div></div>
-      <div class="tip"><div class="dot"></div><div class="tip-t">10.000 pasos diarios reduce el riesgo cardiovascular hasta un 30%.</div></div>
-      <div class="tip"><div class="dot"></div><div class="tip-t">Tomá 200–300 ml de agua cada 20 minutos de ejercicio para mantener el rendimiento.</div></div>
-    </div>
-  </div>
-</div>
-
-<div id="tab-info" class="panel">
-  <div class="info-hero">
-    <div class="info-hero-t">¿Cómo funciona este tracker?</div>
-    <div class="info-hero-s">Usamos el valor MET (equivalente metabólico) junto con tu peso y tiempo de actividad para estimar con precisión las calorías quemadas y los pasos recorridos.</div>
-  </div>
-  <div class="card">
-    <div class="card-label">Datos que usamos</div>
-    <div class="concept-grid">
-      <div class="concept"><div class="concept-num">MET</div><div class="concept-t">Factor metabólico</div><div class="concept-s">Mide la intensidad de cada actividad según velocidad e inclinación.</div></div>
-      <div class="concept"><div class="concept-num">kg</div><div class="concept-t">Peso corporal</div><div class="concept-s">A mayor peso, más calorías se queman por el mismo esfuerzo.</div></div>
-      <div class="concept"><div class="concept-num">min</div><div class="concept-t">Duración</div><div class="concept-s">El tiempo es clave: más minutos = más pasos y más calorías.</div></div>
-      <div class="concept"><div class="concept-num">%</div><div class="concept-t">Inclinación</div><div class="concept-s">Cada 1% de inclinación sube el esfuerzo hasta un 10% extra.</div></div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-label">Fórmula de cálculo</div>
-    <div class="exp-row"><div class="exp-num">1</div><div><div class="exp-t">Calorías quemadas</div><div class="exp-s">Fórmula: MET × peso (kg) × tiempo (h). El MET varía entre 2.5 (caminata lenta) hasta 12+ (trote intenso con inclinación).</div></div></div>
-    <div class="exp-row"><div class="exp-num">2</div><div><div class="exp-t">Pasos estimados</div><div class="exp-s">Se calcula a partir de la cadencia (pasos/min) según la velocidad. A 4 km/h son aprox. 100 pasos/min; a 6 km/h unos 120.</div></div></div>
-    <div class="exp-row"><div class="exp-num">3</div><div><div class="exp-t">Distancia recorrida</div><div class="exp-s">Velocidad × tiempo = distancia. En caminata normal se asume 4.5 km/h de promedio.</div></div></div>
-    <div class="exp-row"><div class="exp-num">4</div><div><div class="exp-t">Intensidad por zonas</div><div class="exp-s">Baja (&lt;3.5 MET), moderada (3.5–6), alta (6–9), muy alta (&gt;9). Cada zona tiene beneficios distintos para tu salud.</div></div></div>
-  </div>
-  <div class="card">
-    <div class="card-label">Preguntas frecuentes</div>
-    <div class="faq"><div class="faq-q" onclick="toggleFaq(this)"><span>¿Qué tan precisos son los resultados?</span><span>+</span></div><div class="faq-a">Son estimaciones basadas en fórmulas científicas validadas. La variación real puede ser ±10–15% según tu composición corporal, condición física y técnica de caminata.</div></div>
-    <div class="faq"><div class="faq-q" onclick="toggleFaq(this)"><span>¿Debo ingresar mi peso exacto?</span><span>+</span></div><div class="faq-a">Sí, mientras más preciso sea tu peso, más exacto será el cálculo de calorías. El peso afecta directamente el gasto energético.</div></div>
-    <div class="faq"><div class="faq-q" onclick="toggleFaq(this)"><span>¿La inclinación cambia mucho las calorías?</span><span>+</span></div><div class="faq-a">Sí, significativamente. A 5% de inclinación quemás aproximadamente un 25–30% más de calorías. A 10%, hasta un 50% más.</div></div>
-    <div class="faq"><div class="faq-q" onclick="toggleFaq(this)"><span>¿Caminata normal vs caminadora?</span><span>+</span></div><div class="faq-a">La caminadora permite controlar exactamente la velocidad e inclinación, lo que hace el cálculo más preciso. En caminata normal se usa un promedio estándar de 4.5 km/h.</div></div>
-  </div>
-</div>
-
-<div id="tab-calorias" class="panel">
-  <div class="card">
-    <div class="card-label">¿Qué son las calorías?</div>
-    <div class="exp-row"><div class="exp-num">🔥</div><div><div class="exp-t">Energía para tu cuerpo</div><div class="exp-s">Una caloría (kcal) es la unidad de energía que usa tu cuerpo para funcionar. Todo lo que hacés — respirar, pensar, moverse — consume calorías.</div></div></div>
-    <div class="exp-row"><div class="exp-num">⚖️</div><div><div class="exp-t">Balance calórico</div><div class="exp-s">Si consumís más calorías de las que quemás, el cuerpo las almacena como grasa. Si quemás más de las que consumís, usás las reservas de grasa como energía.</div></div></div>
-    <div class="exp-row"><div class="exp-num">🏃</div><div><div class="exp-t">Ejercicio y déficit</div><div class="exp-s">El cardio crea un déficit calórico. Se necesitan aproximadamente 7.700 kcal de déficit para perder 1 kg de grasa corporal.</div></div></div>
-  </div>
-  <div class="card">
-    <div class="card-label">¿Cuánto consume cada zona?</div>
-    <div style="margin-bottom:12px">
-      <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--color-text-secondary);margin-bottom:6px"><span>Baja intensidad (caminar lento)</span><span style="font-weight:500;color:var(--color-text-primary)">~150–200 kcal/h</span></div>
-      <div style="height:8px;background:#E1F5EE;border-radius:4px;overflow:hidden"><div style="width:30%;height:100%;background:#1D9E75;border-radius:4px"></div></div>
-    </div>
-    <div style="margin-bottom:12px">
-      <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--color-text-secondary);margin-bottom:6px"><span>Moderada (caminar rápido)</span><span style="font-weight:500;color:var(--color-text-primary)">~250–350 kcal/h</span></div>
-      <div style="height:8px;background:#E1F5EE;border-radius:4px;overflow:hidden"><div style="width:52%;height:100%;background:#1D9E75;border-radius:4px"></div></div>
-    </div>
-    <div style="margin-bottom:12px">
-      <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--color-text-secondary);margin-bottom:6px"><span>Alta (trotar / inclinación)</span><span style="font-weight:500;color:var(--color-text-primary)">~400–600 kcal/h</span></div>
-      <div style="height:8px;background:#E1F5EE;border-radius:4px;overflow:hidden"><div style="width:72%;height:100%;background:#1D9E75;border-radius:4px"></div></div>
-    </div>
-    <div>
-      <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--color-text-secondary);margin-bottom:6px"><span>Muy alta (correr con inclinación)</span><span style="font-weight:500;color:var(--color-text-primary)">~700–900 kcal/h</span></div>
-      <div style="height:8px;background:#E1F5EE;border-radius:4px;overflow:hidden"><div style="width:95%;height:100%;background:#1D9E75;border-radius:4px"></div></div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-label">Comparación: ¿qué quema más?</div>
-    <div class="compare-grid">
-      <div class="cmp">
-        <div class="cmp-t">Cardio</div>
-        <div class="cmp-item"><span class="cmp-act">Caminar</span><span class="cmp-cal">~200</span></div>
-        <div class="cmp-item"><span class="cmp-act">Inclinación 5%</span><span class="cmp-cal">~280</span></div>
-        <div class="cmp-item"><span class="cmp-act">Trotar</span><span class="cmp-cal">~450</span></div>
-        <div class="cmp-item"><span class="cmp-act">Correr</span><span class="cmp-cal">~650</span></div>
-      </div>
-      <div class="cmp">
-        <div class="cmp-t">Alimentos (aprox)</div>
-        <div class="cmp-item"><span class="cmp-act">Manzana</span><span style="color:#D85A30;font-weight:500">95</span></div>
-        <div class="cmp-item"><span class="cmp-act">Banana</span><span style="color:#D85A30;font-weight:500">105</span></div>
-        <div class="cmp-item"><span class="cmp-act">Empanada</span><span style="color:#D85A30;font-weight:500">280</span></div>
-        <div class="cmp-item"><span class="cmp-act">Pizza (1 porcón)</span><span style="color:#D85A30;font-weight:500">350</span></div>
+      <div class="card-label">📱 Contacto</div>
+      <div class="contact-links">
+        <a class="clink" href="https://instagram.com/nicodusich" target="_blank">
+          <span>📸</span>
+          <span style="flex:1">Instagram</span>
+          <span>@nicodusich →</span>
+        </a>
+        <a class="clink" href="mailto:nicodusich4@gmail.com">
+          <span>✉️</span>
+          <span style="flex:1">Gmail</span>
+          <span>nicodusich4@gmail.com →</span>
+        </a>
       </div>
     </div>
-    <div style="font-size:11px;color:var(--color-text-secondary);margin-top:10px">* Valores en kcal por hora o por porción para una persona de ~70 kg</div>
   </div>
-  <div class="card">
-    <div class="card-label">Mitos y realidades</div>
-    <div class="tip"><div class="dot"></div><div class="tip-t"><strong style="color:var(--color-text-primary)">Mito:</strong> "El cardio en ayunas quema más grasa." — La diferencia es mínima. Lo más importante es el déficit calórico total del día.</div></div>
-    <div class="tip"><div class="dot"></div><div class="tip-t"><strong style="color:var(--color-text-primary)">Realidad:</strong> El músculo quema calorías incluso en reposo. Más músculo = más gasto basal diario.</div></div>
-    <div class="tip"><div class="dot"></div><div class="tip-t"><strong style="color:var(--color-text-primary)">Mito:</strong> "Transpirás más = quemás más." — Transpirar solo regula la temperatura, no indica más quema de calorías.</div></div>
-    <div class="tip"><div class="dot"></div><div class="tip-t"><strong style="color:var(--color-text-primary)">Realidad:</strong> 30 min de caminata diaria mejora la salud cardiovascular incluso sin pérdida de peso visible.</div></div>
-  </div>
-</div>
-
-<div id="tab-contacto" class="panel">
-  <div class="contact-hero">
-    <div class="avatar">ND</div>
-    <div class="contact-name">Nico Dusich</div>
-    <div class="contact-sub">Fitness & Cardio Tracker · Creador de esta app</div>
-  </div>
-  <div class="card">
-    <div class="card-label">Contacto directo</div>
-    <div class="contact-links">
-      <a class="clink" href="https://instagram.com/nicodusich" target="_blank">
-        <div class="clink-ico ig">📸</div>
-        <div class="clink-info"><div class="clink-t">Instagram</div><div class="clink-s">@nicodusich</div></div>
-        <div class="clink-arr">↗</div>
-      </a>
-      <a class="clink" href="mailto:nicodusich4@gmail.com">
-        <div class="clink-ico gm">✉️</div>
-        <div class="clink-info"><div class="clink-t">Gmail</div><div class="clink-s">nicodusich4@gmail.com</div></div>
-        <div class="clink-arr">↗</div>
-      </a>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-label">Sobre esta app</div>
-    <div class="exp-row"><div class="exp-num">💡</div><div><div class="exp-t">¿Por qué la creé?</div><div class="exp-s">Quise hacer una herramienta simple y honesta para que cualquier persona pueda entender cuánto esfuerzo está haciendo y cuántas calorías está quemando, sin apps complicadas.</div></div></div>
-    <div class="exp-row"><div class="exp-num">🎯</div><div><div class="exp-t">¿A quién está dirigida?</div><div class="exp-s">A cualquiera que quiera llevar un registro de su actividad física, desde alguien que empieza a caminar hasta atletas que entrenan en caminadora con inclinación.</div></div></div>
-    <div class="exp-row"><div class="exp-num">📬</div><div><div class="exp-t">¿Tenés sugerencias?</div><div class="exp-s">Si querés que agregue funciones, corrijas algo, o simplemente quieras saber más sobre entrenamiento, escribime por Instagram o Gmail. ¡Respondo siempre!</div></div></div>
-  </div>
-</div>
-
 </div>
 
 <script>
-let mode='walk';
-function switchTab(tabName){
-  // quitar active a todos los botones
-  document.querySelectorAll('.tab').forEach(btn=>{
-    btn.classList.remove('active');
-  });
+let mode = 'walk';
+let currentSteps = 0;
+let currentCalories = 0;
+let currentHistory = [];
 
-  // ocultar todos los paneles
-  document.querySelectorAll('.panel').forEach(panel=>{
-    panel.classList.remove('active');
-  });
+// Cargar datos guardados al iniciar
+function loadDailyData() {
+  const today = new Date().toDateString();
+  const savedData = localStorage.getItem('fitness-tracker');
+  
+  if (savedData) {
+    const data = JSON.parse(savedData);
+    if (data.date === today) {
+      currentSteps = data.steps;
+      currentCalories = data.calories;
+      currentHistory = data.history || [];
+    } else {
+      // Día nuevo, resetear
+      currentSteps = 0;
+      currentCalories = 0;
+      currentHistory = [];
+      saveDailyData();
+    }
+  }
+  
+  updateDailyDisplay();
+}
 
-  // activar el botón clickeado
+// Guardar datos del día
+function saveDailyData() {
+  const today = new Date().toDateString();
+  const data = {
+    date: today,
+    steps: currentSteps,
+    calories: currentCalories,
+    history: currentHistory
+  };
+  localStorage.setItem('fitness-tracker', JSON.stringify(data));
+}
+
+// Actualizar display del resumen diario
+function updateDailyDisplay() {
+  document.getElementById('daily-steps').textContent = currentSteps.toLocaleString('es-AR');
+  document.getElementById('daily-calories').textContent = currentCalories.toLocaleString('es-AR');
+  
+  const percent = Math.min(Math.round((currentSteps / 10000) * 100), 100);
+  document.getElementById('progress-percent').textContent = percent + '%';
+  document.getElementById('progress-fill').style.width = percent + '%';
+  
+  // Actualizar fecha
+  const today = new Date();
+  document.getElementById('current-date').textContent = today.toLocaleDateString('es-AR', { 
+    weekday: 'long', 
+    year: 'numeric', 
+    month: 'long', 
+    day: 'numeric' 
+  });
+  
+  // Actualizar historial
+  updateHistoryDisplay();
+}
+
+// Mostrar historial
+function updateHistoryDisplay() {
+  const container = document.getElementById('history-list');
+  
+  if (currentHistory.length === 0) {
+    container.innerHTML = '<div class="empty-history">📭 Aún no hay registros. Guardá tu primera actividad.</div>';
+    return;
+  }
+  
+  container.innerHTML = currentHistory.map((item, index) => `
+    <div class="history-item">
+      <div>
+        <div class="history-time">${item.time}</div>
+        <div style="font-size:12px; color:var(--sub)">${item.activity}</div>
+      </div>
+      <div class="history-stats">
+        <span>👣 ${item.steps.toLocaleString('es-AR')}</span>
+        <span>🔥 ${item.calories} kcal</span>
+        <button class="delete-item" onclick="deleteHistoryItem(${index})">🗑️</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+// Eliminar item del historial
+function deleteHistoryItem(index) {
+  const item = currentHistory[index];
+  currentSteps -= item.steps;
+  currentCalories -= item.calories;
+  currentHistory.splice(index, 1);
+  saveDailyData();
+  updateDailyDisplay();
+  updateResultsDisplay();
+}
+
+// Obtener nombre de la actividad actual
+function getActivityName() {
+  const minutes = document.getElementById('minutes').value;
+  if (mode === 'walk') return `🚶 Caminata (${minutes} min)`;
+  if (mode === 'treadmill') {
+    const spd = document.getElementById('speed').value;
+    const inc = document.getElementById('incline').value;
+    return `⚡ Caminadora (${minutes} min, ${spd} km/h, ${inc}%)`;
+  }
+  const spd = document.getElementById('stair-speed').value;
+  return `🪜 Escaladora (${minutes} min, ${spd} SPM)`;
+}
+
+// Guardar actividad actual
+function saveActivity() {
+  const stepsElem = document.getElementById('r-steps');
+  const calElem = document.getElementById('r-cal');
+  
+  if (stepsElem.textContent === '—') {
+    alert('⚠️ Primero calculá tu actividad con el botón "Calcular"');
+    return;
+  }
+  
+  const steps = parseInt(stepsElem.textContent.replace(/\./g, ''));
+  const calories = parseInt(calElem.textContent);
+  const now = new Date();
+  const timeStr = now.toLocaleTimeString('es-AR', { hour: '2-digit', minute: '2-digit' });
+  
+  currentHistory.unshift({
+    time: timeStr,
+    activity: getActivityName(),
+    steps: steps,
+    calories: calories
+  });
+  
+  currentSteps += steps;
+  currentCalories += calories;
+  
+  saveDailyData();
+  updateDailyDisplay();
+  
+  // Mostrar mensaje de éxito
+  const saveBtn = document.querySelector('.save-btn');
+  const originalText = saveBtn.textContent;
+  saveBtn.textContent = '✅ Guardado!';
+  setTimeout(() => {
+    saveBtn.textContent = originalText;
+  }, 1500);
+}
+
+// Resetear el día
+function resetDay() {
+  if (confirm('¿Estás seguro? Esto eliminará todo el registro de hoy.')) {
+    currentSteps = 0;
+    currentCalories = 0;
+    currentHistory = [];
+    saveDailyData();
+    updateDailyDisplay();
+    updateResultsDisplay();
+  }
+}
+
+// Actualizar resultados después de eliminar
+function updateResultsDisplay() {
+  // Solo actualiza visualmente, no afecta al cálculo actual
+  const stepsElem = document.getElementById('r-steps');
+  const calElem = document.getElementById('r-cal');
+  if (stepsElem.textContent !== '—') {
+    calculate();
+  }
+}
+
+function switchTab(tabName) {
+  document.querySelectorAll('.tab').forEach(btn => btn.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(panel => panel.classList.remove('active'));
   document.querySelector(`[onclick="switchTab('${tabName}')"]`).classList.add('active');
-
-  // mostrar el panel correcto
   document.getElementById('tab-' + tabName).classList.add('active');
 }
-function setMode(m){mode=m;document.getElementById('btn-walk').classList.toggle('active',m==='walk');document.getElementById('btn-treadmill').classList.toggle('active',m==='treadmill');document.getElementById('tfields').classList.toggle('show',m==='treadmill')}
-function toggleFaq(el){const a=el.nextElementSibling;a.classList.toggle('open');el.querySelector('span:last-child').textContent=a.classList.contains('open')?'−':'+'}
-function calculate(){
-  const min=parseFloat(document.getElementById('minutes').value)||30;
-  const kg=parseFloat(document.getElementById('weight').value)||70;
-  let spd=mode==='treadmill'?parseFloat(document.getElementById('speed').value):4.5;
-  let inc=mode==='treadmill'?parseFloat(document.getElementById('incline').value):0;
-  let spm,met;
-  if(spd<4){spm=80+spd*5;met=2.5+inc*0.18}
-  else if(spd<6){spm=100+(spd-4)*10;met=3.5+inc*0.2}
-  else if(spd<9){spm=120+(spd-6)*8;met=5.5+inc*0.25}
-  else{spm=150+(spd-9)*5;met=9+inc*0.3}
-  met=Math.min(met+inc*0.15,16);
-  const steps=Math.round(spm*min);
-  const dist=((spd*min)/60).toFixed(1);
-  const cal=Math.round(met*kg*3.5*min/200);
-  const pct=Math.min(Math.round(steps/100),100);
-  document.getElementById('r-steps').textContent=steps.toLocaleString('es-AR');
-  document.getElementById('r-cal').textContent=cal;
-  document.getElementById('r-dist').textContent=dist;
-  document.getElementById('r-time').textContent=Math.round(min);
-  document.getElementById('r-pct').textContent=pct+'% de 10.000 pasos';
-  let label,bg,metTxt;
-  if(met<3.5){label='Baja intensidad';bg='#E1F5EE';metTxt='MET '+met.toFixed(1)+' — Recuperación activa'}
-  else if(met<6){label='Intensidad moderada';bg='#B5D4F4';metTxt='MET '+met.toFixed(1)+' — Zona quema grasa'}
-  else if(met<9){label='Alta intensidad';bg='#FAC775';metTxt='MET '+met.toFixed(1)+' — Cardio intenso'}
-  else{label='Muy alta intensidad';bg='#F5C4B3';metTxt='MET '+met.toFixed(1)+' — Entrenamiento élite'}
-  const bar=document.getElementById('ibar');bar.textContent=label;bar.style.background=bg;bar.style.color='var(--color-text-primary)';
-  document.getElementById('r-met').textContent=metTxt;
-  let food='';
-  if(cal<100)food=cal+' kcal ≈ 1 manzana';
-  else if(cal<200)food=cal+' kcal ≈ 1 banana';
-  else if(cal<350)food=cal+' kcal ≈ 1 yogur + fruta';
-  else if(cal<500)food=cal+' kcal ≈ 1 almuerzo liviano';
-  else food=cal+' kcal ≈ 1 comida completa';
-  document.getElementById('r-food').textContent=food;
-  document.getElementById('results').classList.add('show');
-  document.getElementById('results').scrollIntoView({behavior:'smooth',block:'start'})
+
+function setMode(m) {
+  mode = m;
+  document.getElementById('btn-walk').classList.toggle('active', m === 'walk');
+  document.getElementById('btn-treadmill').classList.toggle('active', m === 'treadmill');
+  document.getElementById('btn-stair').classList.toggle('active', m === 'stair');
+  
+  document.getElementById('treadmill-fields').style.display = 'none';
+  document.getElementById('stair-fields').style.display = 'none';
+  
+  if (m === 'treadmill') {
+    document.getElementById('treadmill-fields').style.display = 'block';
+  } else if (m === 'stair') {
+    document.getElementById('stair-fields').style.display = 'block';
+  }
 }
+
+function updateSpeedDisplay(val) {
+  document.getElementById('spd-v').textContent = parseFloat(val).toFixed(1);
+  const slider = document.getElementById('speed');
+  const percent = (val - 2) / (15 - 2) * 100;
+  slider.style.background = `linear-gradient(90deg, #00ffae 0%, #00ffae ${percent}%, #2a2f3a ${percent}%, #2a2f3a 100%)`;
+}
+
+function updateInclineDisplay(val) {
+  document.getElementById('inc-v').textContent = val;
+  const slider = document.getElementById('incline');
+  const percent = (val / 15) * 100;
+  slider.style.background = `linear-gradient(90deg, #00ffae 0%, #00ffae ${percent}%, #2a2f3a ${percent}%, #2a2f3a 100%)`;
+}
+
+function updateStairSpeedDisplay(val) {
+  document.getElementById('stair-speed-v').textContent = val;
+  const slider = document.getElementById('stair-speed');
+  const percent = (val - 30) / (120 - 30) * 100;
+  slider.style.background = `linear-gradient(90deg, #00ffae 0%, #00ffae ${percent}%, #2a2f3a ${percent}%, #2a2f3a 100%)`;
+}
+
+function calculate() {
+  const min = parseFloat(document.getElementById('minutes').value) || 30;
+  const kg = parseFloat(document.getElementById('weight').value) || 70;
+  const gender = document.getElementById('gender').value;
+  
+  let spd, spm, met;
+  
+  if (mode === 'walk') {
+    spd = 4.5;
+    spm = 105;
+    met = 3.5;
+  } 
+  else if (mode === 'treadmill') {
+    spd = parseFloat(document.getElementById('speed').value) || 5;
+    const inc = parseFloat(document.getElementById('incline').value) || 0;
+    
+    if (spd < 4) {
+      spm = 80 + spd * 5;
+      met = 2.5 + inc * 0.18;
+    } else if (spd < 6) {
+      spm = 100 + (spd - 4) * 10;
+      met = 3.5 + inc * 0.2;
+    } else if (spd < 9) {
+      spm = 120 + (spd - 6) * 8;
+      met = 5.5 + inc * 0.25;
+    } else {
+      spm = 150 + (spd - 9) * 5;
+      met = 9 + inc * 0.3;
+    }
+    met = Math.min(met + inc * 0.15, 16);
+  } 
+  else {
+    const stairSpeed = parseFloat(document.getElementById('stair-speed').value) || 60;
+    spm = stairSpeed;
+    spd = 1.5 + (stairSpeed / 120) * 4;
+    met = 4.5 + (stairSpeed / 120) * 9;
+    met = Math.min(met, 14);
+  }
+  
+  if (gender === 'f') met = met * 0.95;
+  
+  const steps = Math.round(spm * min);
+  const dist = ((spd * min) / 60).toFixed(1);
+  const cal = Math.round(met * kg * 3.5 * min / 200);
+  const pct = Math.min(Math.round((steps / 10000) * 100), 100);
+  
+  document.getElementById('r-steps').textContent = steps.toLocaleString('es-AR');
+  document.getElementById('r-cal').textContent = cal;
+  document.getElementById('r-dist').textContent = dist;
+  document.getElementById('r-time').textContent = Math.round(min);
+  document.getElementById('r-pct').innerHTML = pct + '%<br><small style="font-size:10px">de 10.000</small>';
+  
+  let label, bg, metTxt;
+  if (met < 3.5) {
+    label = '🟢 Baja intensidad - Recuperación activa';
+    bg = '#1a5c3a';
+    metTxt = 'MET ' + met.toFixed(1);
+  } else if (met < 6) {
+    label = '🟡 Intensidad moderada - Zona quema grasa';
+    bg = '#5c4a1a';
+    metTxt = 'MET ' + met.toFixed(1);
+  } else if (met < 9) {
+    label = '🟠 Alta intensidad - Cardio intenso';
+    bg = '#5c2a1a';
+    metTxt = 'MET ' + met.toFixed(1);
+  } else {
+    label = '🔴 Muy alta intensidad - Entrenamiento élite';
+    bg = '#5c1a1a';
+    metTxt = 'MET ' + met.toFixed(1);
+  }
+  
+  document.getElementById('ibar').textContent = label;
+  document.getElementById('ibar').style.background = bg;
+  document.getElementById('ibar').style.color = '#fff';
+  document.getElementById('r-met').innerHTML = metTxt;
+  
+  let food = '';
+  if (cal < 100) food = '🍎 ' + cal + ' kcal';
+  else if (cal < 200) food = '🍌 ' + cal + ' kcal';
+  else if (cal < 350) food = '🥗 ' + cal + ' kcal';
+  else if (cal < 500) food = '🍱 ' + cal + ' kcal';
+  else food = '🍽️ ' + cal + ' kcal';
+  document.getElementById('r-food').innerHTML = food;
+  
+  document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+window.onload = function() {
+  updateSpeedDisplay(5);
+  updateInclineDisplay(0);
+  updateStairSpeedDisplay(60);
+  loadDailyData();
+};
 </script>
